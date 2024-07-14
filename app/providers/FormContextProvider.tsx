@@ -1,4 +1,4 @@
-import React, { createContext, BaseSyntheticEvent, useEffect, useReducer } from 'react';
+import React, { createContext, BaseSyntheticEvent, useEffect, useReducer, useState } from 'react';
 import { RulesType, validateRules } from '~/utils/form-validator';
 import { useFetcher } from '@remix-run/react';
 import { encryptWithAES } from '~/utils/encryption';
@@ -21,15 +21,12 @@ type FormContextType = {
     formElements: FormElementsType;
     setupForm: (label: string, rules: RulesType | Array<keyof RulesType>) => string;
     validateField: (labelId: string, value: string, initialize?: boolean) => string | null;
-    valid: boolean;
     validateAllFields: () => void;
 };
 
 type FormContextProviderProps = {
     children: React.ReactNode;
     handleSubmit?: (e: BaseSyntheticEvent) => void;
-    handleUpdateValid: (val: boolean) => void;
-    valid: boolean;
     isSensitive?: boolean;
 };
 
@@ -78,15 +75,10 @@ function reducer(state: FormElementsType, action: FormElementAction): FormElemen
     }
 }
 
-const FormContextProvider = ({
-    children,
-    handleSubmit,
-    handleUpdateValid,
-    valid,
-    isSensitive,
-}: FormContextProviderProps) => {
+const FormContextProvider = ({ children, handleSubmit, isSensitive }: FormContextProviderProps) => {
     let matchFields: Record<string, string> = {};
     const [formElements, dispatch] = useReducer(reducer, initialState);
+    const [isValid, setIsValid] = useState(false);
     const fetcher = useFetcher();
 
     const setFormElement = (
@@ -152,7 +144,7 @@ const FormContextProvider = ({
         const valid = Object.values(formElements).filter(
             (elem: { valid: boolean; rules: RulesType | Array<keyof RulesType> }) => elem.valid,
         );
-        handleUpdateValid(keys.length === valid.length);
+        setIsValid(keys.length === valid.length);
     };
 
     useEffect(() => {
@@ -251,9 +243,8 @@ const FormContextProvider = ({
     const validateSubmit = (e: BaseSyntheticEvent) => {
         e.preventDefault();
 
-        if (valid) {
+        if (isValid) {
             if (handleSubmit instanceof Function) {
-                console.log('wut!!!');
                 return handleSubmit(e);
             }
 
@@ -271,7 +262,6 @@ const FormContextProvider = ({
                 validateField,
                 setupForm,
                 formElements,
-                valid,
                 validateAllFields,
             }}
         >

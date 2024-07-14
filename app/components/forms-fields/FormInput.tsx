@@ -6,11 +6,10 @@ import useAppForm from '~/hooks/useAppForm';
 import { RulesType } from '~/utils/form-validator';
 
 type Props = {
-    handleUpdateInput: (value: string) => void;
     label: string;
     onBlur?: boolean;
     rules?: RulesType | Array<keyof RulesType>;
-    value: string;
+    defaultValue?: string;
     readOnly?: boolean;
     validateOnInit?: boolean;
     password?: boolean;
@@ -26,13 +25,12 @@ type Props = {
 
 function FormInput(
     {
-        handleUpdateInput,
         label,
         onBlur = true,
         rules,
-        value,
         icon,
         name,
+        defaultValue = '',
         readOnly = false,
         validateOnInit = false,
         password = false,
@@ -45,18 +43,15 @@ function FormInput(
     }: Props,
     ref: Ref<HTMLInputElement>,
 ) {
-    const { error, labelId, updateInputValue } = useAppForm({
+    const { error, labelId, getInputValue, updateInputValue } = useAppForm({
         label,
-        value,
+        value: defaultValue,
         validateOnInit,
         rules,
         name,
     });
 
-    const updateValue = (inputValue: BaseSyntheticEvent) => {
-        updateInputValue(inputValue);
-        handleUpdateInput(inputValue.target.value);
-    };
+    const updateValue = (inputValue: BaseSyntheticEvent) => updateInputValue(inputValue);
 
     return (
         <div className='relative'>
@@ -85,7 +80,7 @@ function FormInput(
                             : 'border-red-600',
                     )}
                     type={password ? 'password' : 'text'}
-                    value={value}
+                    value={getInputValue}
                     autoComplete={noAutocomplete || password ? 'on' : 'off'}
                     aria-labelledby={labelId}
                     onBlur={(e) => {
