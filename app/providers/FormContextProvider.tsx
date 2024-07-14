@@ -248,7 +248,6 @@ const FormContextProvider = ({ children, handleSubmit, isSensitive }: FormContex
                 return handleSubmit(e);
             }
 
-            console.log('game????');
             const formData = isSensitive ? prepareSensitiveData() : e.currentTarget;
             return fetcher.submit(formData, { method: 'POST' });
         }
