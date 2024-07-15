@@ -44,7 +44,7 @@ export default function FormButton(props: FormButtonProps) {
             switch (color) {
                 case 'primary':
                     styles =
-                        'bg-primary border-primary border hover:border-opacity-85 hover:bg-opacity-85 active:bg-dark-primary active:border-dark-primary text-white ';
+                        'bg-primary border-primary border hover:border-opacity-85 hover:bg-opacity-85 active:bg-dark-primary active:border-dark-primary text-white dark:text-dm-primary ';
                     break;
                 case 'primary-g':
                     styles =
@@ -75,7 +75,7 @@ export default function FormButton(props: FormButtonProps) {
                         styles += 'border-gray-300 border dark:border-gray-800 ';
                     }
                     styles +=
-                        'bg-white hover:bg-gray-100 dark:bg-dark-main dark:hover:bg-dark-secondary active:bg-gray-200 text-gray-600 dark:text-gray-300 ';
+                        'bg-white hover:bg-gray-100 dark:bg-dm-primary dark:hover:bg-dark-secondary active:bg-gray-200 text-gray-600 dark:text-gray-300 ';
                     break;
             }
         } else {
@@ -108,7 +108,7 @@ export default function FormButton(props: FormButtonProps) {
                     break;
                 case 'lg':
                 default:
-                    styles += 'py-5 px-20 ';
+                    styles += 'py-2 px-20 ';
                     break;
             }
         }

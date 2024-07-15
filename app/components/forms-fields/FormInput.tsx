@@ -74,9 +74,9 @@ function FormInput(
                             ? 'bg-gray-200 text-gray-500 dark:bg-gray-700'
                             : blended
                               ? 'bg-transparent dark:text-gray-300'
-                              : 'bg-white text-gray-600',
+                              : 'dark:bg-dm-primary bg-white text-gray-400',
                         !error
-                            ? 'border-gray-300 focus:border-primary dark:border-gray-700'
+                            ? 'dark:border-dm-stroke border-gray-300 focus:border-primary'
                             : 'border-red-600',
                     )}
                     type={password ? 'password' : 'text'}
