@@ -6,8 +6,11 @@ export function Layout({ children }: { children: React.ReactNode }) {
     useEffect(() => {
         const matchMedia = window.matchMedia('(prefers-color-scheme: dark)');
 
-        if (localStorage.getItem('color-theme') === 'dark') {
-            document.documentElement.classList.add('dark');
+        if ('color-theme' in localStorage) {
+            document.documentElement.classList.toggle(
+                'dark',
+                localStorage.getItem('color-theme') === 'dark',
+            );
         } else {
             document.documentElement.classList.toggle('dark', matchMedia.matches);
             matchMedia.addEventListener('change', (e) => {
