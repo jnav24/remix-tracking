@@ -41,7 +41,7 @@ export default function useAppForm({ label, rules, validateOnInit, value, name }
     };
 
     const getInputValue = useMemo(() => {
-        return formContext.formElements[labelId]?.value ?? value;
+        return formContext?.formElements?.[labelId]?.value ?? value;
     }, [formContext.formElements, labelId, value]);
 
     return { error, labelId, getInputValue, updateInputValue };
