@@ -48,7 +48,7 @@ export default function FormButton(props: FormButtonProps) {
                     break;
                 case 'primary-g':
                     styles =
-                        'bg-gradient-to-r from-blue-500 to-indigo-700 hover:from-dark-primary hover:to-dark-primary text-white transition-all duration-150 ease-out hover:-translate-y-1 hover:scale-110 active:from-indigo-700 active:to-indigo-700 bg-size-200 bg-pos-0 hover:bg-pos-100 shadow-none hover:shadow-xl ';
+                        'bg-gradient-to-br from-teal-300 from-10% via-blue-500 via-35% to-violet-500 to-85% text-white transition-all duration-500 ease-out bg-size-200 bg-pos-0 hover:bg-pos-100 ';
                     break;
                 case 'secondary':
                     styles =
@@ -83,7 +83,7 @@ export default function FormButton(props: FormButtonProps) {
         }
 
         if (fab) {
-            styles += 'rounded-full p-2 mr-2 ';
+            styles += 'rounded-full p-2 ';
         }
 
         if (checkbox) {

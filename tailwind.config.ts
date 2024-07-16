@@ -7,6 +7,16 @@ export default {
     darkMode: 'class',
     theme: {
         extend: {
+            animation: {
+                blur: 'blur 3s linear infinite',
+            },
+            backgroundSize: {
+                'size-200': '200% 200%',
+            },
+            backgroundPosition: {
+                'pos-0': '0% 0%',
+                'pos-100': '100% 100%',
+            },
             colors: {
                 danger: colors.red['700'],
                 'danger-hover': colors.red['600'],
@@ -24,6 +34,22 @@ export default {
             },
             fontFamily: {
                 sans: ['Inter var', ...defaultTheme.fontFamily.sans],
+            },
+            keyframes: {
+                blur: {
+                    '0%': {
+                        opacity: '0.6',
+                        transform: 'rotate(0deg)',
+                    },
+                    '50%': {
+                        opacity: '0.75',
+                        transform: 'rotate(180deg)',
+                    },
+                    '100%': {
+                        opacity: '0.6',
+                        transform: 'rotate(360deg)',
+                    },
+                },
             },
             width: {
                 100: '25rem',
