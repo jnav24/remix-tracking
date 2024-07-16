@@ -1,5 +1,7 @@
 # Welcome to Remix!
 
+![trackr_login.png](public/images/trackr_login.png)
+
 - 📖 [Remix docs](https://remix.run/docs)
 
 ## Development
