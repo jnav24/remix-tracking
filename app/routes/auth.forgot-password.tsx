@@ -1,4 +1,3 @@
-import { Link } from '@remix-run/react';
 import AuthLayout from '~/components/layouts/AuthLayout';
 import FormContextProvider from '~/providers/FormContextProvider';
 import FormInput from '~/components/forms-fields/FormInput';
@@ -6,6 +5,8 @@ import FormButton from '~/components/forms-fields/FormButton';
 import { route } from '~/utils/routes';
 import { ActionFunctionArgs } from '@remix-run/node';
 import { decryptAES } from '~/utils/encryption';
+import AppLink from '~/components/elements/AppLink';
+import Typography from '~/components/elements/Typography';
 
 type FormElements = {
     email: string;
@@ -27,7 +28,7 @@ export default function AuthForgotPassword() {
     return (
         <AuthLayout title='Forgot your password?'>
             <FormContextProvider isSensitive>
-                <div className='mb-12 space-y-8'>
+                <div className='mb-8 space-y-8'>
                     <FormInput label='Email' rules={['required', 'email']} />
                 </div>
 
@@ -36,9 +37,10 @@ export default function AuthForgotPassword() {
                 </FormButton>
             </FormContextProvider>
 
-            <div className='mt-4 flex justify-between'>
-                <Link to={route('auth.login')}>Login</Link>
-                <Link to={route('auth.register')}>Sign up</Link>
+            <div className='mt-4 flex justify-center'>
+                <Typography variant='caption'>
+                    <AppLink to={route('auth.login')}>Back to login</AppLink>
+                </Typography>
             </div>
         </AuthLayout>
     );

@@ -1,4 +1,3 @@
-import { Link } from '@remix-run/react';
 import AuthLayout from '~/components/layouts/AuthLayout';
 import { ActionFunctionArgs } from '@remix-run/node';
 import { decryptAES } from '~/utils/encryption';
@@ -7,9 +6,15 @@ import FormInput from '~/components/forms-fields/FormInput';
 import FormButton from '~/components/forms-fields/FormButton';
 import { route } from '~/utils/routes';
 import { RulesType } from '~/utils/form-validator';
+import AppLink from '~/components/elements/AppLink';
+import Typography from '~/components/elements/Typography';
 
 type FormElements = {
     email: string;
+    'first-name': string;
+    'last-name': string;
+    password: string;
+    'password-confirmation': string;
 };
 
 const nameRules: Array<keyof RulesType> = ['required', 'min:3'];
@@ -50,8 +55,10 @@ export default function AuthRegister() {
                 </FormButton>
             </FormContextProvider>
 
-            <div className='mt-4 flex justify-between'>
-                <Link to={route('auth.login')}>Login</Link>
+            <div className='mt-4 flex justify-center'>
+                <Typography variant='caption'>
+                    Already have an account? <AppLink to={route('auth.login')}>Login</AppLink>
+                </Typography>
             </div>
         </AuthLayout>
     );
