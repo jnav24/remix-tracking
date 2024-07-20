@@ -1,5 +1,5 @@
 import React from 'react';
-import clsx from 'clsx';
+import { cn } from '~/utils/helpers';
 
 type TagType = 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'p';
 
@@ -78,7 +78,7 @@ export default function Typography({ children, className = '', color, tag, varia
                 break;
         }
 
-        return clsx(classes, className);
+        return cn(classes, className);
     };
 
     const Component: TagType = tag ?? (variantsMapping[variant] as TagType) ?? 'p';
