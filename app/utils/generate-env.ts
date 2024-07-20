@@ -70,38 +70,36 @@ const updateEnvFileToMatchExample = () => {
         .split('\n')
         .map((item) => item.replace('=', ''));
 
-    if (envContent.length !== exampleEnvContent.length) {
-        const envObject = envContent.reduce(
-            (result, current) => {
-                if (current) {
-                    const [key, val] = current.split('=');
-                    return {
-                        ...result,
-                        [key]: val,
-                    };
-                }
+    const envObject = envContent.reduce(
+        (result, current) => {
+            if (current) {
+                const [key, val] = current.split('=');
+                return {
+                    ...result,
+                    [key]: val,
+                };
+            }
 
-                return result;
-            },
-            {} as Record<string, string>,
-        );
+            return result;
+        },
+        {} as Record<string, string>,
+    );
 
-        const newEnvContent = exampleEnvContent
-            .map((item) => {
-                if (!item) {
-                    return '';
-                }
+    const newEnvContent = exampleEnvContent
+        .map((item) => {
+            if (!item) {
+                return '';
+            }
 
-                if (!envObject[item]) {
-                    return `${item}=`;
-                }
+            if (!envObject[item]) {
+                return `${item}=`;
+            }
 
-                return `${item}=${envObject[item]}`;
-            })
-            .join('\n');
+            return `${item}=${envObject[item]}`;
+        })
+        .join('\n');
 
-        saveToFile('./.env', newEnvContent);
-    }
+    saveToFile('./.env', newEnvContent);
 };
 
 const rl = readline.createInterface({
