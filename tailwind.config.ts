@@ -28,6 +28,8 @@ export default {
                 'dm-primary': '#0E1013',
                 'dm-secondary': '#17181B',
                 'dm-stroke': '#25272b',
+                'dm-text': '#41444c',
+                'dm-text-hover': '#575b66',
                 'lm-primary': colors.gray['50'],
                 'lm-secondary': colors.white,
                 'lm-stroke': colors.gray['100'],
