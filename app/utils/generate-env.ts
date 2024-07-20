@@ -38,7 +38,7 @@ const cleanup = (filename: string) => {
             `${getPath('./node_modules/prettier/bin/prettier.cjs')} --write "${getPath(filename)}"`,
             (err, stdout, stderr) => {
                 if (err || stderr) {
-                    console.error(`Command Error: ${stderr}`);
+                    console.error(chalk.red(`Command Error: ${stderr}`));
                 }
             },
         );
@@ -108,39 +108,39 @@ const rl = readline.createInterface({
 });
 
 const generate = () => {
-    try {
-        rl.question(
-            chalk.red(
-                'This will generate a env variables based on the .env.example which will overwrite your .env and env.d.ts files.\n',
-                '(NOTE: This will not overwrite .env values if the env variables exists in the .env.example)\n',
-                'Do you want to continue? (yes/no) ',
-            ),
-            (answer) => {
+    rl.question(
+        chalk.red(
+            'This will generate a env variables based on the .env.example which will overwrite your .env and env.d.ts files.\n',
+            '(NOTE: This will not overwrite .env values if the env variables exists in the .env.example)\n',
+            'Do you want to continue? (yes/no) ',
+        ),
+        (answer) => {
+            try {
                 if (answer.match(/^y(es)?$/i)) {
-                    console.log('Generating env files....');
+                    console.log(chalk.yellow('Generating env files....'));
                     const exampleEnv = getFile('./.env.example');
                     createFileIfNotExists('./.env', exampleEnv);
                     const result = getAllEnvVariables(exampleEnv);
                     generateEnvTypes(result);
                     updateEnvFileToMatchExample();
-                    console.log('Env generation completed');
+                    console.log(chalk.green('Env generation completed'));
                 } else {
                     console.log('Canceled env generation');
                 }
+            } catch (err) {
+                const error = err as { code?: string; path?: string };
 
+                if (error?.code === 'ENOENT') {
+                    console.error(chalk.red(`File not found :: ${error?.path}`));
+                    return;
+                }
+
+                console.error(chalk.red(err));
+            } finally {
                 rl.close();
-            },
-        );
-    } catch (err) {
-        const error = err as { code?: string; path?: string };
-
-        if (error?.code === 'ENOENT') {
-            console.error(`File not found :: ${error?.path}`);
-            return;
-        }
-
-        console.error(err);
-    }
+            }
+        },
+    );
 };
 
 generate();
