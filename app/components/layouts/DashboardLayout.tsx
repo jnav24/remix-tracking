@@ -1,8 +1,10 @@
 import React from 'react';
 import Typography from '~/components/elements/Typography';
 import RadarIcon from '~/components/icons/RadarIcon';
-import QueueListIcon from '~/components/icons/QueueListIcon';
-import ClockIcon from '~/components/icons/ClockIcon';
+import Avatar from '~/components/elements/Avatar';
+import ChevronDownIcon from '../icons/ChevronDownIcon';
+import SidebarNav from '~/components/menu/SidebarNav';
+import SidebarFooter from '~/components/menu/SidebarFooter';
 
 type Props = {
     children: React.ReactNode;
@@ -22,30 +24,21 @@ export default function DashboardLayout({ children, notifications, title }: Prop
                         </Typography>
                     </div>
 
-                    <div>profile</div>
+                    <div className='dark:bg-dm-stroke flex items-center space-x-2 rounded-full py-1 pl-1 pr-2'>
+                        <Avatar
+                            image='https://t4.ftcdn.net/jpg/03/64/21/11/360_F_364211147_1qgLVxv1Tcq0Ohz3FawUfrtONzz8nq3e.jpg'
+                            size={8}
+                        />
+                        <ChevronDownIcon className='size-4 dark:text-gray-500' />
+                    </div>
                 </div>
 
                 <div className='mt-6 space-y-2'>
-                    <div className='to-dm-secondary from-dm-stroke/60 inline-block w-full rounded-lg bg-gradient-to-b from-10% to-30% p-1 shadow shadow-black'>
-                        <div className='bg-dm-secondary flex items-center space-x-2 p-2'>
-                            <QueueListIcon className='size-6 text-gray-500' />
-                            <Typography variant='caption'>Projects</Typography>
-                        </div>
-                    </div>
-                    <div className=''>
-                        <div className='bg-dm-secondary flex items-center space-x-2 p-2'>
-                            <ClockIcon className='size-6 text-gray-500' />
-                            <Typography variant='caption'>Billing Tracker</Typography>
-                        </div>
-                    </div>
+                    <SidebarNav />
                 </div>
 
                 <div className='absolute bottom-0 pb-4'>
-                    <Typography variant='caption'>Support &amp; FAQ</Typography>
-                    <Typography variant='caption'>Request Feature</Typography>
-                    <Typography variant='caption'>
-                        &copy; {new Date().getFullYear()} TrackR
-                    </Typography>
+                    <SidebarFooter />
                 </div>
             </aside>
 
