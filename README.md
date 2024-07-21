@@ -4,7 +4,7 @@
 
 Similar to apps like Harvest, you can track billable hours for your clients and projects, as well as, team management. Maybe, eventually, will be able to view important metrics and generate invoices. This app is a work-in-progress project and may never be as robust as Harvest and others because this is being built for fun. 
 
-![trackr_login.png](public/images/trackr_login.png)
+![trackr_login.png](public/images/trackr_login_2.png)
 ![trackr_time.png](public/images/trackr_time.png)
 
 ### Environment Variables
