@@ -4,6 +4,11 @@ const routes = {
     'auth.forgot': '/auth/forgot-password',
     'auth.login': '/auth/login',
     'auth.register': '/auth/register',
+    'dashboard.clients': '/dashboard/clients',
+    'dashboard.tasks': '/dashboard/tasks',
+    'dashboard.projects': '/dashboard/projects',
+    'dashboard.billing': '/dashboard/billing',
+    'dashboard.team': '/dashboard/team',
     user: (opt: QueryParams) => `/user/${opt.id}`,
 };
 
