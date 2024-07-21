@@ -1,5 +1,6 @@
-import { useLocation } from '@remix-run/react';
+import { useLocation, useNavigate } from '@remix-run/react';
 import { cn } from '~/utils/helpers';
+import { route } from '~/utils/routes';
 import Typography from '~/components/elements/Typography';
 import QueueListIcon from '~/components/icons/QueueListIcon';
 import ClockIcon from '~/components/icons/ClockIcon';
@@ -10,41 +11,42 @@ import { Fragment } from 'react';
 
 export default function SidebarNav() {
     const { pathname } = useLocation();
+    const navigate = useNavigate();
     const iconStyles = (custom = '') => cn('size-6 dark:text-dm-text-hover', custom);
     const navItems = [
         {
             label: 'Clients',
             notifications: 0,
             icon: <ContactIcon className={iconStyles()} />,
-            to: '',
+            to: route('dashboard.clients'),
             permission: '',
         },
         {
             label: 'Projects',
             notifications: 0,
             icon: <QueueListIcon className={iconStyles()} />,
-            to: '',
+            to: route('dashboard.projects'),
             permission: '',
         },
         {
             label: 'Time Tracker',
             notifications: 0,
             icon: <ClockIcon className={iconStyles()} />,
-            to: '/dashboard/tasks',
+            to: route('dashboard.tasks'),
             permission: '',
         },
         {
             label: 'Billing',
             notifications: 0,
             icon: <MoneyIcon className={iconStyles()} />,
-            to: '',
+            to: route('dashboard.billing'),
             permission: '',
         },
         {
             label: 'Team',
             notifications: 0,
             icon: <UserGroupIcon className={iconStyles()} />,
-            to: '',
+            to: route('dashboard.team'),
             permission: '',
         },
     ];
@@ -57,13 +59,26 @@ export default function SidebarNav() {
                         <div
                             className={cn(
                                 pathname === item.to &&
-                                    'inline-block w-full rounded-lg bg-gradient-to-b from-dm-stroke/60 from-10% to-dm-secondary to-30% p-0.5 shadow-sm shadow-black',
+                                    'to-dm-secondary from-dm-stroke/60 inline-block w-full rounded-lg bg-gradient-to-b from-10% to-30% p-0.5 shadow-sm shadow-black',
+                                'group',
                             )}
+                            key={idx}
+                            onKeyDown={() => null}
+                            onClick={() => navigate({ pathname: item.to })}
+                            role='button'
+                            tabIndex={0}
                         >
                             <div className='flex items-center justify-between bg-dm-secondary p-2'>
                                 <div className='flex items-center space-x-2'>
                                     {item.icon}
-                                    <Typography variant='caption'>{item.label}</Typography>
+                                    <Typography
+                                        className={cn(
+                                            pathname !== item.to && 'group-hover:text-primary',
+                                        )}
+                                        variant='caption'
+                                    >
+                                        {item.label}
+                                    </Typography>
                                 </div>
 
                                 {item.notifications > 0 && (
