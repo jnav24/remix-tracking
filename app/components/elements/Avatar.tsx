@@ -1,4 +1,4 @@
-import UserIcon from '~/components/icons/UserIcon';
+import UserIcon from '~/components/icons/solid/UserIcon';
 import { cn } from '~/utils/helpers';
 
 type Props = {
