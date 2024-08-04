@@ -6,6 +6,7 @@ import ClockIcon from '~/components/icons/ClockIcon';
 import UserGroupIcon from '~/components/icons/UserGroupIcon';
 import MoneyIcon from '~/components/icons/MoneyIcon';
 import ContactIcon from '~/components/icons/ContactIcon';
+import { Fragment } from 'react';
 
 export default function SidebarNav() {
     const { pathname } = useLocation();
@@ -51,16 +52,15 @@ export default function SidebarNav() {
     return (
         <>
             {navItems.map((item, idx) => (
-                <>
+                <Fragment key={idx}>
                     {item.permission === '' && (
                         <div
                             className={cn(
                                 pathname === item.to &&
-                                    'to-dm-secondary from-dm-stroke/60 inline-block w-full rounded-lg bg-gradient-to-b from-10% to-30% p-0.5 shadow-sm shadow-black',
+                                    'inline-block w-full rounded-lg bg-gradient-to-b from-dm-stroke/60 from-10% to-dm-secondary to-30% p-0.5 shadow-sm shadow-black',
                             )}
-                            key={idx}
                         >
-                            <div className='bg-dm-secondary flex items-center justify-between p-2'>
+                            <div className='flex items-center justify-between bg-dm-secondary p-2'>
                                 <div className='flex items-center space-x-2'>
                                     {item.icon}
                                     <Typography variant='caption'>{item.label}</Typography>
@@ -76,7 +76,7 @@ export default function SidebarNav() {
                             </div>
                         </div>
                     )}
-                </>
+                </Fragment>
             ))}
         </>
     );
