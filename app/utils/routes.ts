@@ -9,6 +9,7 @@ const routes = {
     'dashboard.projects': '/dashboard/projects',
     'dashboard.billing': '/dashboard/billing',
     'dashboard.team': '/dashboard/team',
+    'dashboard.logout': '/dashboard/logout',
     user: (opt: QueryParams) => `/user/${opt.id}`,
 };
 

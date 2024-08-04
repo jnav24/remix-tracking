@@ -5,13 +5,25 @@ import UserIcon from '~/components/icons/outline/UserIcon';
 import CogIcon from '~/components/icons/outline/CogIcon';
 import FormButton from '~/components/forms-fields/FormButton';
 import LogoutIcon from '~/components/icons/outline/LogoutIcon';
+import { useNavigate } from '@remix-run/react';
+import { route } from '~/utils/routes';
 
 export default function ProfileMenu() {
+    const navigate = useNavigate();
+
     const iconStyles = 'size-6 dark:text-dm-text-hover';
 
     const links = [
-        { label: 'My Profile', icon: <UserIcon className={iconStyles} />, to: '' },
-        { label: 'Account Settings', icon: <CogIcon className={iconStyles} />, to: '' },
+        {
+            label: 'My Profile',
+            icon: <UserIcon className={iconStyles} />,
+            to: route('dashboard.billing'),
+        },
+        {
+            label: 'Account Settings',
+            icon: <CogIcon className={iconStyles} />,
+            to: route('dashboard.projects'),
+        },
     ];
 
     return (
@@ -37,7 +49,11 @@ export default function ProfileMenu() {
                     {links.map((item, idx) => (
                         <div
                             className='flex cursor-pointer items-center space-x-2 rounded-lg p-1 dark:hover:bg-dm-stroke'
+                            onClick={() => navigate(item.to)}
+                            onKeyDown={() => null}
+                            role='button'
                             key={idx}
+                            tabIndex={0}
                         >
                             {item.icon}
                             <Typography variant='caption'>{item.label}</Typography>
@@ -45,12 +61,14 @@ export default function ProfileMenu() {
                     ))}
                 </div>
                 <div className='p-2'>
-                    <FormButton block filled>
-                        <div className='flex items-center space-x-2'>
-                            <LogoutIcon className='size-4 text-white' />
-                            <span>Logout</span>
-                        </div>
-                    </FormButton>
+                    <form action={route('dashboard.logout')} method='POST'>
+                        <FormButton block filled submit>
+                            <div className='flex items-center space-x-2'>
+                                <LogoutIcon className='size-4 text-white' />
+                                <span>Logout</span>
+                            </div>
+                        </FormButton>
+                    </form>
                 </div>
             </div>
         </div>
