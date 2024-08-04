@@ -72,7 +72,7 @@ export default function FormButton(props: FormButtonProps) {
                     break;
                 default:
                     if (!filled) {
-                        styles += 'border-gray-300 border dark:border-gray-800 ';
+                        styles += 'border-lm-primary border dark:border-dm-stroke ';
                     }
                     styles +=
                         'bg-white hover:bg-gray-100 dark:bg-dm-primary dark:hover:bg-dark-secondary active:bg-gray-200 text-gray-600 dark:text-gray-300 ';
@@ -126,7 +126,9 @@ export default function FormButton(props: FormButtonProps) {
     return (
         <>
             <button className={getButtonStyles()} {...rest} type={buttonType}>
-                <span className='flex flex-row items-center justify-center'>{props.children}</span>
+                <span className='flex flex-row items-center justify-center space-x-2'>
+                    {props.children}
+                </span>
             </button>
         </>
     );
