@@ -1,10 +1,9 @@
 import React from 'react';
 import Typography from '~/components/elements/Typography';
 import RadarIcon from '~/components/icons/RadarIcon';
-import Avatar from '~/components/elements/Avatar';
-import ChevronDownIcon from '../icons/ChevronDownIcon';
 import SidebarNav from '~/components/menu/SidebarNav';
 import SidebarFooter from '~/components/menu/SidebarFooter';
+import ProfileMenu from '~/components/menu/ProfileMenu';
 
 type Props = {
     children: React.ReactNode;
@@ -14,8 +13,8 @@ type Props = {
 
 export default function DashboardLayout({ children, notifications, title }: Props) {
     return (
-        <main className='dark:bg-dm-primary bg-lm-primary flex h-screen'>
-            <aside className='dark:bg-dm-secondary dark:border-dm-stroke border-lm-stroke relative w-64 border-r bg-white px-4'>
+        <main className='flex h-screen bg-lm-primary dark:bg-dm-primary'>
+            <aside className='relative w-64 border-r border-lm-stroke bg-white px-4 dark:border-dm-stroke dark:bg-dm-secondary'>
                 <div className='flex items-center justify-between'>
                     <div className='flex items-center space-x-2 py-4'>
                         <RadarIcon className='size-10 text-primary' />
@@ -24,13 +23,7 @@ export default function DashboardLayout({ children, notifications, title }: Prop
                         </Typography>
                     </div>
 
-                    <div className='dark:bg-dm-stroke flex items-center space-x-2 rounded-full py-1 pl-1 pr-2'>
-                        <Avatar
-                            image='https://t4.ftcdn.net/jpg/03/64/21/11/360_F_364211147_1qgLVxv1Tcq0Ohz3FawUfrtONzz8nq3e.jpg'
-                            size={8}
-                        />
-                        <ChevronDownIcon className='size-4 dark:text-gray-500' />
-                    </div>
+                    <ProfileMenu />
                 </div>
 
                 <div className='mt-6 space-y-2'>
@@ -43,10 +36,10 @@ export default function DashboardLayout({ children, notifications, title }: Prop
             </aside>
 
             <section className='flex-1'>
-                <div className='border-lm-stroke dark:border-dm-stroke dark:bg-dm-primary flex items-center space-x-2 border-b bg-white px-10 py-4'>
+                <div className='flex items-center space-x-2 border-b border-lm-stroke bg-white px-10 py-4 dark:border-dm-stroke dark:bg-dm-primary'>
                     <Typography variant='body1'>{title}</Typography>
                     {!!notifications && (
-                        <div className='dark:bg-dm-secondary dark:border-dm-stroke bg-lm-primary border-lm-stroke rounded border px-2 py-1'>
+                        <div className='rounded border border-lm-stroke bg-lm-primary px-2 py-1 dark:border-dm-stroke dark:bg-dm-secondary'>
                             <Typography variant='caption'>{notifications}</Typography>
                         </div>
                     )}
