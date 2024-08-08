@@ -7,9 +7,33 @@ import FormButton from '~/components/forms-fields/FormButton';
 import LogoutIcon from '~/components/icons/outline/LogoutIcon';
 import { useNavigate } from '@remix-run/react';
 import { route } from '~/utils/routes';
+import { useEffect, useRef, useState } from 'react';
+import { cn } from '~/utils/helpers';
 
 export default function ProfileMenu() {
     const navigate = useNavigate();
+    const [isOpen, setIsOpen] = useState(false);
+    const menuRef = useRef<HTMLDivElement>(null);
+
+    useEffect(() => {
+        menuRef.current?.classList.add('h-0', 'py-0');
+    }, []);
+
+    useEffect(() => {
+        let timeoutId: undefined | NodeJS.Timeout;
+
+        if (!isOpen) {
+            timeoutId = setTimeout(() => menuRef.current?.classList.add('h-0', 'py-0'), 300);
+        } else {
+            menuRef.current?.classList.remove('h-auto', 'py-1');
+        }
+
+        return () => {
+            if (timeoutId) {
+                clearTimeout(timeoutId);
+            }
+        };
+    }, [isOpen]);
 
     const iconStyles = 'size-6 dark:text-dm-text-hover';
 
@@ -27,14 +51,31 @@ export default function ProfileMenu() {
     ];
 
     return (
-        <div className='relative flex items-center space-x-2 rounded-full py-1 pl-1 pr-2 dark:bg-dm-stroke'>
-            <Avatar
-                image='https://t4.ftcdn.net/jpg/03/64/21/11/360_F_364211147_1qgLVxv1Tcq0Ohz3FawUfrtONzz8nq3e.jpg'
-                size={8}
-            />
-            <ChevronDownIcon className='size-4 dark:text-gray-500' />
+        <section className='relative'>
+            <button
+                className='flex items-center space-x-2 rounded-full py-1 pl-1 pr-2 dark:bg-dm-stroke'
+                onClick={() => setIsOpen(!isOpen)}
+                type='button'
+            >
+                <Avatar
+                    image='https://t4.ftcdn.net/jpg/03/64/21/11/360_F_364211147_1qgLVxv1Tcq0Ohz3FawUfrtONzz8nq3e.jpg'
+                    size={8}
+                />
+                <ChevronDownIcon
+                    className={cn(
+                        'size-4 transition duration-300 dark:text-gray-500',
+                        isOpen ? 'rotate-180' : 'rotate-0',
+                    )}
+                />
+            </button>
 
-            <div className='absolute -left-2 top-12 w-56 rounded-lg border bg-lm-secondary shadow-xl dark:border-dm-stroke dark:bg-dm-secondary'>
+            <div
+                className={cn(
+                    'absolute -left-2 top-12 w-56 overflow-hidden rounded-lg border bg-lm-secondary shadow-xl transition duration-300 ease-out dark:border-dm-stroke dark:bg-dm-secondary',
+                    isOpen ? 'translate-y-0 opacity-100' : 'translate-y-6 opacity-0',
+                )}
+                ref={menuRef}
+            >
                 <div className='flex items-center space-x-2 py-2 pl-2'>
                     <Avatar
                         image='https://t4.ftcdn.net/jpg/03/64/21/11/360_F_364211147_1qgLVxv1Tcq0Ohz3FawUfrtONzz8nq3e.jpg'
@@ -71,6 +112,6 @@ export default function ProfileMenu() {
                     </form>
                 </div>
             </div>
-        </div>
+        </section>
     );
 }
