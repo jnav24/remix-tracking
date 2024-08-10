@@ -21,19 +21,33 @@ export default function ProfileMenu() {
 
     useEffect(() => {
         let timeoutId: undefined | NodeJS.Timeout;
+        const { current } = menuRef;
 
-        if (!isOpen) {
-            timeoutId = setTimeout(() => menuRef.current?.classList.add('h-0', 'py-0'), 300);
-        } else {
-            menuRef.current?.classList.remove('h-auto', 'py-1');
+        const clickHandler = (e: MouseEvent) => {
+            const container = document.getElementById('subnav');
+
+            if (!container || !container.contains(e.target as Node)) {
+                setIsOpen(false);
+            }
+        };
+
+        if (!isOpen && current) {
+            timeoutId = setTimeout(() => {
+                current.classList.add('h-0', 'py-0');
+            }, 300);
+            document.removeEventListener('click', clickHandler);
+        } else if (current) {
+            current.classList.remove('h-auto', 'py-1');
+            document.addEventListener('click', clickHandler);
         }
 
         return () => {
             if (timeoutId) {
                 clearTimeout(timeoutId);
             }
+            document.removeEventListener('click', clickHandler);
         };
-    }, [isOpen]);
+    }, [isOpen, menuRef]);
 
     const iconStyles = 'size-6 dark:text-dm-text-hover';
 
@@ -70,6 +84,7 @@ export default function ProfileMenu() {
             </button>
 
             <div
+                id='subnav'
                 className={cn(
                     'absolute -left-2 top-12 w-56 overflow-hidden rounded-lg border bg-lm-secondary shadow-xl transition duration-300 ease-out dark:border-dm-stroke dark:bg-dm-secondary',
                     isOpen ? 'translate-y-0 opacity-100' : 'translate-y-6 opacity-0',
