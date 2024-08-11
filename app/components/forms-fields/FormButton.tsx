@@ -73,7 +73,7 @@ export default function FormButton(props: FormButtonProps) {
                     break;
                 case 'inverse':
                     styles =
-                        'bg-red-300 dark:bg-lm-stroke dark:hover:bg-lm-stroke/75 transition duration-150 ';
+                        'bg-dm-stroke hover:bg-dm-stroke/75 dark:bg-lm-stroke dark:hover:bg-lm-stroke/75 transition duration-150 ';
                     break;
                 default:
                     if (!filled) {
