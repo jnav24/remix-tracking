@@ -7,6 +7,7 @@ export type ButtonColor =
     | 'secondary'
     | 'danger'
     | 'success'
+    | 'inverse'
     | 'primary-bd'
     | 'primary-white'
     | 'primary-dark';
@@ -70,6 +71,10 @@ export default function FormButton(props: FormButtonProps) {
                 case 'primary-dark':
                     styles = 'bg-gray-700 hover:bg-gray-900 text-white shadow-md ';
                     break;
+                case 'inverse':
+                    styles =
+                        'bg-red-300 dark:bg-lm-stroke dark:hover:bg-lm-stroke/75 transition duration-150 ';
+                    break;
                 default:
                     if (!filled) {
                         styles += 'border-lm-primary border dark:border-dm-stroke ';
@@ -95,7 +100,7 @@ export default function FormButton(props: FormButtonProps) {
 
             switch (size) {
                 case '2xs':
-                    styles += 'p-3';
+                    styles += 'px-4 py-2';
                     break;
                 case 'xs':
                     styles += 'px-5 py-3';
