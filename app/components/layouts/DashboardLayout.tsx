@@ -8,7 +8,7 @@ import FormButton from '~/components/forms-fields/FormButton';
 
 type Action = {
     label: string;
-    icon: React.ReactNode;
+    icon?: React.ReactNode;
     click: () => void;
 };
 
