@@ -1,0 +1,44 @@
+.dn {
+    display: none;
+}
+
+.animated {
+    -webkit-animation-fill-mode: none, forwards;
+    animation-fill-mode: none, forwards;
+    animation-iteration-count: 1;
+}
+
+.animated-fade {
+    -webkit-animation-duration: 0.3s;
+    animation-duration: 0.3s;
+}
+
+.fadeIn {
+    animation-name: fadeIn;
+    opacity: 1;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+.fadeOut {
+    animation-name: fadeOut;
+    opacity: 0;
+}
+
+@keyframes fadeOut {
+    from {
+        opacity: 1;
+    }
+
+    to {
+        opacity: 0;
+    }
+}
