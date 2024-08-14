@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { ReactNode, useEffect, useState } from 'react';
 import FadeTransition from '~/components/modals/FadeTransition';
 import TransitionOverlay from '~/components/modals/TransitionOverlay';
 import SlideTransition from '~/components/modals/SlideTransition';
@@ -6,7 +6,7 @@ import { cn } from '~/utils/helpers';
 import FormButton from '~/components/forms-fields/FormButton';
 
 type Props = {
-    children: React.ReactNode;
+    children: ReactNode;
     closeModal: () => void;
     hideCloseButton?: boolean;
     persistent?: boolean;
