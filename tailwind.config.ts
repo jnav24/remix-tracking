@@ -58,6 +58,9 @@ export default {
                 150: '38rem',
                 200: '50rem',
             },
+            zIndex: {
+                '100': '100',
+            },
         },
     },
     plugins: [require('@tailwindcss/forms'), require('@tailwindcss/typography')],

@@ -9,8 +9,8 @@
 }
 
 .animated-slide {
-    -webkit-animation-duration: ${duration}s;
-    animation-duration: ${duration}s;
+    -webkit-animation-duration: 0.2s;
+    animation-duration: 0.2s;
 }
 
 @keyframes slide_right {
