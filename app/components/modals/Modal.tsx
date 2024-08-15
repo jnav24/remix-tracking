@@ -48,7 +48,7 @@ export default function Modal({
                             &#8203;
                             <section
                                 className={cn(
-                                    'relative z-10 inline-block overflow-x-hidden rounded-lg bg-white text-left align-bottom shadow-xl dark:bg-gray-900 sm:my-8 sm:align-middle',
+                                    'relative z-10 inline-block overflow-x-hidden rounded-lg bg-white text-left align-bottom shadow-xl dark:bg-dm-secondary sm:my-8 sm:align-middle',
                                 )}
                                 role='dialog'
                                 aria-modal='true'
