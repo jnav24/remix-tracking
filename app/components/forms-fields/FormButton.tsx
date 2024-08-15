@@ -25,10 +25,11 @@ export type FormButtonProps = DetailedHTMLProps<
     size?: '2xs' | 'xs' | 'sm' | 'md' | 'lg';
     submit?: boolean;
     type?: 'button' | 'submit' | 'reset';
+    variant?: 'text' | 'outlined' | 'solid';
 };
 
 export default function FormButton(props: FormButtonProps) {
-    const { block, checkbox, color, fab, filled, size, submit, ...rest } = props;
+    const { block, checkbox, color, fab, filled, size, submit, variant, ...rest } = props;
 
     const buttonType = useMemo(() => {
         if (submit) {
@@ -36,7 +37,9 @@ export default function FormButton(props: FormButtonProps) {
         }
 
         return props.type || 'button';
-    }, [props]);
+    }, [props, submit]);
+
+    const buttonVariant = useMemo(() => variant || 'solid', [variant]);
 
     const getButtonStyles = () => {
         let styles = 'focus:outline-none focus:shadow-outline transition duration-150 ';
@@ -44,8 +47,20 @@ export default function FormButton(props: FormButtonProps) {
         if (!props.disabled) {
             switch (color) {
                 case 'primary':
-                    styles =
-                        'bg-primary border-primary border hover:border-opacity-85 hover:bg-opacity-85 active:bg-dark-primary active:border-dark-primary text-white dark:text-dm-primary ';
+                    styles = 'hover:border-opacity-85 hover:bg-opacity-85 transition duration-150 ';
+
+                    if (['text', 'outlined'].includes(buttonVariant)) {
+                        styles += 'text-primary hover:bg-primary/5 ';
+                    }
+
+                    if (['solid', 'outlined'].includes(buttonVariant)) {
+                        styles += 'border border-primary active:border-primary-focus ';
+                    }
+
+                    if (buttonVariant === 'solid') {
+                        styles +=
+                            'bg-primary text-white dark:text-dm-primary active:bg-primary-focus ';
+                    }
                     break;
                 case 'primary-g':
                     styles =
