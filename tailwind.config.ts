@@ -55,8 +55,12 @@ export default {
             },
             width: {
                 100: '25rem',
+                104: '26rem',
+                120: '30rem',
+                128: '32rem',
                 150: '38rem',
                 200: '50rem',
+                256: '64rem',
             },
             zIndex: {
                 '100': '100',
