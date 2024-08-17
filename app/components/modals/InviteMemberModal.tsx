@@ -24,8 +24,6 @@ export default function InviteMemberModal({ closeModal }: Props) {
         return isValid && !members.some((member) => member.email === '' || member.role === '');
     }, [members, isValid]);
 
-    console.log(canSendInvites);
-
     const addMember = () => setMembers([...members, emptyMember]);
 
     const removeInvite = (idx: number) =>
@@ -48,7 +46,7 @@ export default function InviteMemberModal({ closeModal }: Props) {
                 {limit} invites at a time.
             </Typography>
 
-            <FormContextProvider handleUpdateValid={setIsValid}>
+            <FormContextProvider formAction='invite' handleUpdateValid={setIsValid}>
                 <div className='my-6 space-y-4'>
                     {members.map((member, idx) => (
                         <div className='flex items-end space-x-3' key={idx}>
