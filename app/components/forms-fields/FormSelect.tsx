@@ -99,6 +99,7 @@ export default function FormSelect({
 
     return (
         <div>
+            <input type='hidden' name={labelId} id={labelId} value={getInputValue} />
             <FormLabel error={error} label={label} labelId={labelId} />
 
             <div
