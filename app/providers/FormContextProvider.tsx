@@ -26,6 +26,7 @@ type FormContextType = {
 
 type FormContextProviderProps = {
     children: React.ReactNode;
+    handleUpdateValid?: (val: boolean) => void;
     handleSubmit?: (e: BaseSyntheticEvent) => void;
     isSensitive?: boolean;
 };
@@ -75,7 +76,12 @@ function reducer(state: FormElementsType, action: FormElementAction): FormElemen
     }
 }
 
-const FormContextProvider = ({ children, handleSubmit, isSensitive }: FormContextProviderProps) => {
+const FormContextProvider = ({
+    children,
+    handleSubmit,
+    handleUpdateValid,
+    isSensitive,
+}: FormContextProviderProps) => {
     let matchFields: Record<string, string> = {};
     const [formElements, dispatch] = useReducer(reducer, initialState);
     const [isValid, setIsValid] = useState(false);
@@ -145,6 +151,7 @@ const FormContextProvider = ({ children, handleSubmit, isSensitive }: FormContex
             (elem: { valid: boolean; rules: RulesType | Array<keyof RulesType> }) => elem.valid,
         );
         setIsValid(keys.length === valid.length);
+        handleUpdateValid?.(keys.length === valid.length);
     };
 
     useEffect(() => {

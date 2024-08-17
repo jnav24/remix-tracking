@@ -7,11 +7,13 @@ import { RulesType } from '~/utils/form-validator';
 
 type Props = {
     defaultValue?: string;
+    handleUpdateInput?: (v: string) => void;
     isDisabled?: boolean;
     itemLabel?: string;
     items: SelectItems[];
     itemValue?: string;
     label?: string;
+    name?: string;
     placeholder?: string;
     rules?: RulesType | Array<keyof RulesType>;
 };
@@ -19,12 +21,14 @@ type Props = {
 type SelectItems = Record<string, string>;
 
 export default function FormSelect({
+    handleUpdateInput,
     defaultValue = '',
     isDisabled = false,
     itemLabel = 'label',
     items,
     itemValue = 'value',
     label = '',
+    name,
     placeholder = 'Select',
     rules = [],
 }: Props) {
@@ -36,11 +40,12 @@ export default function FormSelect({
         value: defaultValue,
         validateOnInit: false,
         rules,
-        name: undefined,
+        name,
     });
 
     const updateValue = (inputValue: BaseSyntheticEvent) => {
         updateInputValue(inputValue);
+        handleUpdateInput?.(inputValue.target.value);
     };
 
     useEffect(() => {
@@ -102,7 +107,7 @@ export default function FormSelect({
                     error && !isDisabled && 'border-red-600 bg-white text-red-600',
                     !error &&
                         !isDisabled &&
-                        'dark:bg-dm-secondary dark:border-dm-stroke hover:border-dm-stroke cursor-pointer border-gray-300 bg-white text-gray-600 transition duration-300 hover:text-gray-700 focus:border-primary',
+                        'cursor-pointer border-gray-300 bg-white text-gray-600 transition duration-300 hover:border-dm-stroke hover:text-gray-700 focus:border-primary dark:border-dm-stroke dark:bg-dm-secondary',
                     isDisabled &&
                         'cursor-text border-gray-300 bg-gray-200 text-gray-500 dark:border-gray-600 dark:bg-gray-800',
                     !isDropDownOpened ? 'z-0' : 'z-50',
@@ -129,6 +134,7 @@ export default function FormSelect({
                     ref={dropDownItems}
                 >
                     {items.map((item, index) => (
+                        // eslint-disable-next-line jsx-a11y/interactive-supports-focus
                         <div
                             className='p-2 text-sm hover:bg-gray-200'
                             onClick={() =>
@@ -136,14 +142,9 @@ export default function FormSelect({
                                     target: { value: item[itemValue] },
                                 } as BaseSyntheticEvent)
                             }
-                            onKeyDown={() => {
-                                updateValue({
-                                    target: { value: item[itemValue] },
-                                } as BaseSyntheticEvent);
-                            }}
+                            onKeyDown={() => null}
                             key={index}
                             role='button'
-                            tabIndex={0}
                         >
                             {item[itemLabel]}
                         </div>

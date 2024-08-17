@@ -6,6 +6,7 @@ import useAppForm from '~/hooks/useAppForm';
 import { RulesType } from '~/utils/form-validator';
 
 type Props = {
+    handleUpdateInput?: (value: string) => void;
     label: string;
     onBlur?: boolean;
     rules?: RulesType | Array<keyof RulesType>;
@@ -25,6 +26,7 @@ type Props = {
 
 function FormInput(
     {
+        handleUpdateInput,
         label,
         onBlur = true,
         rules,
@@ -51,7 +53,10 @@ function FormInput(
         name,
     });
 
-    const updateValue = (inputValue: BaseSyntheticEvent) => updateInputValue(inputValue);
+    const updateValue = (inputValue: BaseSyntheticEvent) => {
+        updateInputValue(inputValue);
+        handleUpdateInput?.(inputValue.target.value);
+    };
 
     return (
         <div className='relative'>
@@ -74,9 +79,9 @@ function FormInput(
                             ? 'bg-gray-200 text-gray-500 dark:bg-gray-700'
                             : blended
                               ? 'bg-transparent dark:text-gray-300'
-                              : 'dark:bg-dm-primary bg-white text-gray-400',
+                              : 'bg-white text-gray-400 dark:bg-dm-primary',
                         !error
-                            ? 'dark:border-dm-stroke border-gray-300 focus:border-primary'
+                            ? 'border-gray-300 focus:border-primary dark:border-dm-stroke'
                             : 'border-red-600',
                     )}
                     type={password ? 'password' : 'text'}
