@@ -25,7 +25,9 @@ type FormContextType = {
 };
 
 type FormContextProviderProps = {
+    action?: string;
     children: React.ReactNode;
+    formAction?: string;
     handleUpdateValid?: (val: boolean) => void;
     handleSubmit?: (e: BaseSyntheticEvent) => void;
     isSensitive?: boolean;
@@ -77,7 +79,9 @@ function reducer(state: FormElementsType, action: FormElementAction): FormElemen
 }
 
 const FormContextProvider = ({
+    action = '',
     children,
+    formAction = 'default',
     handleSubmit,
     handleUpdateValid,
     isSensitive,
@@ -242,7 +246,7 @@ const FormContextProvider = ({
             {} as Record<string, string>,
         );
 
-        formData.append('data', encryptWithAES(JSON.stringify(data)));
+        formData.append('form_data', encryptWithAES(JSON.stringify(data)));
 
         return formData;
     };
@@ -271,7 +275,9 @@ const FormContextProvider = ({
                 validateAllFields,
             }}
         >
-            <form method='POST' onSubmit={validateSubmit}>
+            <form method='POST' action={action} onSubmit={validateSubmit}>
+                {/* @todo add csrf */}
+                <input name='form_action' type='hidden' value={formAction} />
                 {children}
             </form>
         </FormContext.Provider>
