@@ -104,8 +104,10 @@ export default function FormButton(props: FormButtonProps) {
                     }
 
                     if (buttonVariant === 'solid') {
+                        styles += checkbox ? 'bg-lm-secondary ' : 'bg-lm-text-hover ';
+
                         styles +=
-                            'bg-lm-text-hover active:bg-lm-stroke dark:bg-dm-primary dark:hover:bg-dm-secondary dark:active:bg-dm-stroke text-lm-secondary dark:text-gray-300 ';
+                            'active:bg-lm-stroke dark:bg-dm-primary dark:hover:bg-dm-secondary dark:active:bg-dm-stroke text-lm-secondary dark:text-gray-300 ';
                     }
                     break;
             }
