@@ -12,7 +12,8 @@ import { Fragment } from 'react';
 export default function SidebarNav() {
     const { pathname } = useLocation();
     const navigate = useNavigate();
-    const iconStyles = (custom = '') => cn('size-6 dark:text-dm-text-hover', custom);
+    const iconStyles = (custom = '') =>
+        cn('size-6 text-lm-text-hover dark:text-dm-text-hover', custom);
     const navItems = [
         {
             label: 'Clients',
@@ -59,7 +60,7 @@ export default function SidebarNav() {
                         <div
                             className={cn(
                                 pathname === item.to &&
-                                    'to-dm-secondary from-dm-stroke/60 inline-block w-full rounded-lg bg-gradient-to-b from-10% to-30% p-0.5 shadow-sm shadow-black',
+                                    'inline-block w-full rounded-lg bg-gradient-to-b from-lm-stroke/60 from-10% to-lm-stroke to-30% p-0.5 shadow-sm shadow-gray-300 dark:from-dm-stroke/60 dark:to-dm-secondary dark:shadow-black',
                                 'group',
                             )}
                             key={idx}
@@ -68,12 +69,18 @@ export default function SidebarNav() {
                             role='button'
                             tabIndex={0}
                         >
-                            <div className='flex items-center justify-between bg-dm-secondary p-2'>
+                            <div
+                                className={cn(
+                                    'flex items-center justify-between p-2 dark:bg-dm-secondary',
+                                    pathname === item.to ? 'bg-lm-stroke' : 'bg-lm-secondary',
+                                )}
+                            >
                                 <div className='flex items-center space-x-2'>
                                     {item.icon}
                                     <Typography
                                         className={cn(
-                                            pathname !== item.to && 'group-hover:text-primary',
+                                            pathname !== item.to &&
+                                                'group-hover:text-primary-focus dark:group-hover:text-primary',
                                         )}
                                         variant='caption'
                                     >

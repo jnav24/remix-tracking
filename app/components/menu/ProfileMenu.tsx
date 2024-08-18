@@ -67,7 +67,7 @@ export default function ProfileMenu() {
     return (
         <section className='relative'>
             <button
-                className='flex items-center space-x-2 rounded-full py-1 pl-1 pr-2 dark:bg-dm-stroke'
+                className='flex items-center space-x-2 rounded-full bg-lm-stroke py-1 pl-1 pr-2 dark:bg-dm-stroke'
                 onClick={() => setIsOpen(!isOpen)}
                 type='button'
             >
@@ -104,7 +104,7 @@ export default function ProfileMenu() {
                 <div className='space-y-2 border-b-2 border-t-2 p-2 dark:border-dm-stroke'>
                     {links.map((item, idx) => (
                         <div
-                            className='flex cursor-pointer items-center space-x-2 rounded-lg p-1 dark:hover:bg-dm-stroke'
+                            className='flex cursor-pointer items-center space-x-2 rounded-lg p-1 hover:bg-lm-stroke dark:hover:bg-dm-stroke'
                             onClick={() => navigate(item.to)}
                             onKeyDown={() => null}
                             role='button'
@@ -118,7 +118,7 @@ export default function ProfileMenu() {
                 </div>
                 <div className='p-2'>
                     <form action={route('dashboard.logout')} method='POST'>
-                        <FormButton block filled submit>
+                        <FormButton block submit>
                             <div className='flex items-center space-x-2'>
                                 <LogoutIcon className='size-4 text-white' />
                                 <span>Logout</span>
