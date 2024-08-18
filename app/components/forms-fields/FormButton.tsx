@@ -50,16 +50,17 @@ export default function FormButton(props: FormButtonProps) {
                     styles = 'hover:border-opacity-85 hover:bg-opacity-85 transition duration-150 ';
 
                     if (['text', 'outlined'].includes(buttonVariant)) {
-                        styles += 'text-primary hover:bg-primary/5 ';
+                        styles += 'text-primary-focus dark:text-primary hover:bg-primary/5 ';
                     }
 
                     if (['solid', 'outlined'].includes(buttonVariant)) {
-                        styles += 'border border-primary active:border-primary-focus ';
+                        styles +=
+                            'border border-primary-focus dark:border-primary active:border-primary-focus ';
                     }
 
                     if (buttonVariant === 'solid') {
                         styles +=
-                            'bg-primary text-white dark:text-dm-primary active:bg-primary-focus ';
+                            'bg-primary-focus dark:bg-primary text-white dark:text-dm-primary active:bg-primary dark:active:bg-primary-focus ';
                     }
                     break;
                 case 'primary-g':
@@ -88,14 +89,24 @@ export default function FormButton(props: FormButtonProps) {
                     break;
                 case 'inverse':
                     styles =
-                        'bg-dm-stroke hover:bg-dm-stroke/75 dark:bg-lm-stroke dark:hover:bg-lm-stroke/75 transition duration-150 ';
+                        'bg-dm-stroke hover:bg-dm-stroke/75 dark:bg-lm-stroke dark:hover:bg-lm-stroke/75 transition duration-150 text-lm-primary dark:text-dm-primary ';
                     break;
                 default:
-                    if (!filled) {
-                        styles += 'border-lm-primary border dark:border-dm-stroke ';
+                    styles = 'hover:border-opacity-85 hover:bg-opacity-85 transition duration-150 ';
+
+                    if (['text', 'outlined'].includes(buttonVariant)) {
+                        styles +=
+                            'text-lm-text-hover dark:text-dm-primary hover:bg-lm-text-hover/5 dark:hover:bg-dm-primary/5 ';
                     }
-                    styles +=
-                        'bg-white hover:bg-gray-100 dark:bg-dm-primary dark:hover:bg-dark-secondary active:bg-gray-200 text-gray-600 dark:text-gray-300 ';
+
+                    if (['solid', 'outlined'].includes(buttonVariant)) {
+                        styles += 'border border-lm-text-hover dark:border-dm-primary ';
+                    }
+
+                    if (buttonVariant === 'solid') {
+                        styles +=
+                            'bg-lm-text-hover active:bg-lm-stroke dark:bg-dm-primary dark:hover:bg-dm-secondary dark:active:bg-dm-stroke text-lm-secondary dark:text-gray-300 ';
+                    }
                     break;
             }
         } else {
