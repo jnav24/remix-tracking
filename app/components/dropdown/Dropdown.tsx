@@ -24,9 +24,10 @@ export default function Dropdown({ children, disabled, label = 'Dropdown Menu', 
                 aria-haspopup='true'
                 aria-label={label}
                 className={cn(
-                    disabled && 'bg-gray-200 text-gray-400',
+                    disabled &&
+                        'bg-lm-disabled dark:bg-dm-disabled dark:text-dm-text-disabled dark:border-dm-disabled text-lm-text-disabled',
                     !disabled &&
-                        'dark:bg-dark-main dark:hover:bg-dark-secondary bg-white text-gray-600 hover:bg-gray-100 active:bg-gray-200 dark:text-gray-300',
+                        'text-lm-text-hover bg-lm-secondary hover:bg-lm-primary active:bg-gray-200 dark:border-dm-primary dark:bg-dm-secondary dark:text-lm-secondary dark:hover:bg-dm-primary',
                     'ease flex rounded-full border-2 p-2 text-sm transition duration-300 focus:outline-none',
                 )}
                 disabled={disabled}
