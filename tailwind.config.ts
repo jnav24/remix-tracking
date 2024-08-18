@@ -32,7 +32,8 @@ export default {
                 'dm-text-hover': '#575b66',
                 'lm-primary': colors.gray['50'],
                 'lm-secondary': colors.white,
-                'lm-stroke': colors.gray['100'],
+                'lm-stroke': colors.gray['200'],
+                'lm-text-hover': colors.gray['500'],
             },
             fontFamily: {
                 sans: ['Inter var', ...defaultTheme.fontFamily.sans],
