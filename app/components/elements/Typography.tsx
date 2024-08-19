@@ -58,7 +58,7 @@ export default function Typography({ children, className = '', color, tag, varia
                 if (variant === 'caption') {
                     classes.push('text-sm dark:text-gray-300');
                 } else {
-                    classes.push('text-base');
+                    classes.push(variant === 'body1' ? 'text-base' : 'text-[0.9375rem]');
                 }
                 break;
         }
