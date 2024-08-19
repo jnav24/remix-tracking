@@ -76,7 +76,7 @@ export default function Table<T extends object>({
     }, [paginateState, items]);
 
     const defaultContent = (item: T, value: string) => (
-        <Typography variant='body1'>{parseNested(item, value)}</Typography>
+        <Typography variant='body2'>{parseNested(item, value)}</Typography>
     );
 
     const toggleCheckedItem = (id: string) => {
