@@ -21,7 +21,6 @@ export type FormButtonProps = DetailedHTMLProps<
     children: React.ReactNode;
     color?: ButtonColor;
     fab?: boolean;
-    filled?: boolean;
     size?: '2xs' | 'xs' | 'sm' | 'md' | 'lg';
     submit?: boolean;
     type?: 'button' | 'submit' | 'reset';
@@ -29,7 +28,7 @@ export type FormButtonProps = DetailedHTMLProps<
 };
 
 export default function FormButton(props: FormButtonProps) {
-    const { block, checkbox, color, fab, filled, size, submit, variant, ...rest } = props;
+    const { block, checkbox, color, fab, size, submit, variant, ...rest } = props;
 
     const buttonType = useMemo(() => {
         if (submit) {
