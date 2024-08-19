@@ -12,7 +12,7 @@ export default function TableRow({ bgColor, children, className }: Props) {
         <div
             className={cn(
                 bgColor ??
-                    'bg-lm-secondary hover:bg-lm-stroke dark:bg-dm-secondary dark:hover:bg-dm-primary/25',
+                    'bg-lm-secondary hover:bg-gray-100 dark:bg-dm-secondary dark:hover:bg-dm-primary/25',
                 'flex flex-row items-center space-x-4 border-0 border-lm-stroke px-4 py-6 shadow-sm dark:border-dm-stroke',
                 className,
             )}
