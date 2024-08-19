@@ -113,36 +113,6 @@ const match = <T>(value: boolean | string | number, obj: MatchType<T>): T => {
     return obj.default;
 };
 
-type PluralTuple = [singular?: string | number | null, plural?: string | number | null];
-type InterpolatableValue = string | number | PluralTuple;
-
-const plural = (
-    count: number,
-): ((strings: TemplateStringsArray, ...interpolate: InterpolatableValue[]) => string) => {
-    return (strings, ...interpolate) => {
-        const isPlural = count > 1 || count === 0;
-
-        const values = interpolate.map((value) => {
-            if (Array.isArray(value)) {
-                return value[isPlural ? 1 : 0] ?? '';
-            }
-
-            return value;
-        });
-
-        return strings
-            .reduce((str, value, idx) => `${str}${value}${values[idx] ?? ''}`, '')
-            .replace(/{(.*?)}/g, (_, m) => {
-                if (typeof m === 'string') {
-                    return m.split('|')[isPlural ? 1 : 0];
-                }
-
-                return m;
-            })
-            .replace('$count', count.toString());
-    };
-};
-
 const matchy = <T>(value: boolean | string | number): ((obj: MatchType<T>) => T) => {
     return (obj) => match<T>(value, obj);
 };
@@ -161,5 +131,4 @@ export {
     getErrorMessage,
     parseNested,
     toPascalCase,
-    plural,
 };
