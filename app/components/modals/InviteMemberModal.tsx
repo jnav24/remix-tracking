@@ -4,7 +4,7 @@ import PaperAirplaneIcon from '~/components/icons/outline/PaperAirplaneIcon';
 import AddIcon from '~/components/icons/outline/AddIcon';
 import FormInput from '~/components/forms-fields/FormInput';
 import FormSelect from '~/components/forms-fields/FormSelect';
-import CancelIcon from '~/components/icons/CancelIcon';
+import CancelIcon from '~/components/icons/outline/CancelIcon';
 import { useMemo, useState } from 'react';
 import FormContextProvider from '~/providers/FormContextProvider';
 

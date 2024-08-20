@@ -2,7 +2,7 @@ import { BaseSyntheticEvent, useEffect, useMemo, useRef, useState } from 'react'
 import clsx from 'clsx';
 import useAppForm from '~/hooks/useAppForm';
 import FormLabel from '~/components/forms-fields/FormLabel';
-import ChevronDownIcon from '~/components/icons/ChevronDownIcon';
+import ChevronDownIcon from '~/components/icons/outline/ChevronDownIcon';
 import { RulesType } from '~/utils/form-validator';
 
 type Props = {

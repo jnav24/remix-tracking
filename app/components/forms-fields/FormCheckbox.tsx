@@ -2,7 +2,7 @@ import { BaseSyntheticEvent } from 'react';
 
 import FormButton from '~/components/forms-fields/FormButton';
 import FormLabel from '~/components/forms-fields/FormLabel';
-import CheckIcon from '~/components/icons/CheckIcon';
+import CheckIcon from '~/components/icons/outline/CheckIcon';
 import { RulesType } from '~/utils/form-validator';
 import useAppForm from '~/hooks/useAppForm';
 

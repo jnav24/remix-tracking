@@ -1,6 +1,6 @@
 import Typography from '~/components/elements/Typography';
-import LifeBuoyIcon from '~/components/icons/LifeBuoyIcon';
-import ChatBubbleIcon from '~/components/icons/ChatBubbleIcon';
+import LifeBuoyIcon from '~/components/icons/outline/LifeBuoyIcon';
+import ChatBubbleIcon from '~/components/icons/outline/ChatBubbleIcon';
 
 export default function SidebarFooter() {
     const navLinks = [
@@ -13,7 +13,7 @@ export default function SidebarFooter() {
             <div className='mb-10 space-y-4'>
                 {navLinks.map((item, idx) => (
                     <Typography
-                        className='dark:text-dm-text-hover flex space-x-2'
+                        className='flex space-x-2 dark:text-dm-text-hover'
                         variant='caption'
                         key={idx}
                     >

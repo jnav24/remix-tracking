@@ -1,5 +1,5 @@
 import Avatar from '~/components/elements/Avatar';
-import ChevronDownIcon from '~/components/icons/ChevronDownIcon';
+import ChevronDownIcon from '~/components/icons/outline/ChevronDownIcon';
 import Typography from '~/components/elements/Typography';
 import UserIcon from '~/components/icons/outline/UserIcon';
 import CogIcon from '~/components/icons/outline/CogIcon';

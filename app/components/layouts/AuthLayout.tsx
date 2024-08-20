@@ -1,5 +1,5 @@
 import React from 'react';
-import RadarIcon from '~/components/icons/RadarIcon';
+import RadarIcon from '~/components/icons/outline/RadarIcon';
 import Typography from '~/components/elements/Typography';
 
 type Props = {
@@ -9,7 +9,7 @@ type Props = {
 
 export default function AuthLayout({ children, title }: Props) {
     return (
-        <main className='dark:bg-dm-primary bg-lm-primary flex min-h-screen flex-col justify-center py-12 sm:px-6 lg:px-8'>
+        <main className='flex min-h-screen flex-col justify-center bg-lm-primary py-12 dark:bg-dm-primary sm:px-6 lg:px-8'>
             <div className='sm:mx-auto sm:w-full sm:max-w-md'>
                 <div className='flex justify-center'>
                     <RadarIcon className='size-16 text-primary' />
@@ -21,7 +21,7 @@ export default function AuthLayout({ children, title }: Props) {
             </div>
 
             <div className='mt-8 sm:mx-auto sm:w-full sm:max-w-md'>
-                <div className='dark:bg-dm-secondary bg-white px-4 py-8 shadow sm:rounded-lg sm:px-10'>
+                <div className='bg-white px-4 py-8 shadow dark:bg-dm-secondary sm:rounded-lg sm:px-10'>
                     {children}
                 </div>
             </div>

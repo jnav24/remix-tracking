@@ -2,11 +2,11 @@ import { useLocation, useNavigate } from '@remix-run/react';
 import { cn } from '~/utils/helpers';
 import { route } from '~/utils/routes';
 import Typography from '~/components/elements/Typography';
-import QueueListIcon from '~/components/icons/QueueListIcon';
-import ClockIcon from '~/components/icons/ClockIcon';
-import UserGroupIcon from '~/components/icons/UserGroupIcon';
-import MoneyIcon from '~/components/icons/MoneyIcon';
-import ContactIcon from '~/components/icons/ContactIcon';
+import QueueListIcon from '~/components/icons/outline/QueueListIcon';
+import ClockIcon from '~/components/icons/outline/ClockIcon';
+import UserGroupIcon from '~/components/icons/outline/UserGroupIcon';
+import MoneyIcon from '~/components/icons/outline/MoneyIcon';
+import ContactIcon from '~/components/icons/outline/ContactIcon';
 import { Fragment } from 'react';
 
 export default function SidebarNav() {

@@ -1,6 +1,6 @@
 import React from 'react';
 import Typography from '~/components/elements/Typography';
-import RadarIcon from '~/components/icons/RadarIcon';
+import RadarIcon from '~/components/icons/outline/RadarIcon';
 import SidebarNav from '~/components/menu/SidebarNav';
 import SidebarFooter from '~/components/menu/SidebarFooter';
 import ProfileMenu from '~/components/menu/ProfileMenu';
