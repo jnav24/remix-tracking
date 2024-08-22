@@ -45,7 +45,7 @@ export default function TablePagination({
             const sum = num + 1;
             return (
                 <FormButton
-                    color={page === sum ? 'primary' : 'default'}
+                    color={page === sum ? 'default' : 'secondary'}
                     size='2xs'
                     onClick={() => handleChangePage(sum)}
                     key={num}
@@ -73,11 +73,11 @@ export default function TablePagination({
                 <Typography variant='caption'>per page</Typography>
             </div>
 
-            <div className='flex flex-row items-center'>
+            <div className='flex flex-row items-center space-x-2'>
                 {pages > 1 && (
                     <>
                         <FormButton fab disabled={page === 1} onClick={() => handleChangePage(1)}>
-                            <ChevronDoubleLeftIcon className='h-4 w-4' />
+                            <ChevronDoubleLeftIcon className='size-4' />
                         </FormButton>
                         {pages < allowedLinks ? paginationLinks(pages) : null}
                         <FormButton
@@ -85,7 +85,7 @@ export default function TablePagination({
                             disabled={page === pages}
                             onClick={() => handleChangePage(pages)}
                         >
-                            <ChevronDoubleRightIcon className='h-4 w-4' />
+                            <ChevronDoubleRightIcon className='size-4' />
                         </FormButton>
                     </>
                 )}
