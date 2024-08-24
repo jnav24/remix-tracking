@@ -66,7 +66,7 @@ export default function DashboardLayout({ children, notifications, title, action
                     </div>
                 </div>
 
-                <div className='px-10 py-4'>{children}</div>
+                <div className='container mx-auto px-10 py-4'>{children}</div>
             </section>
         </main>
     );
