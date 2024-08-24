@@ -38,6 +38,7 @@ export default {
                 'lm-primary': colors.gray['50'],
                 'lm-secondary': colors.white,
                 'lm-stroke': colors.gray['200'],
+                'lm-text': colors.gray['300'],
                 'lm-text-hover': colors.gray['500'],
                 'lm-disabled': '#E5E5E5',
                 'lm-text-disabled': '#ABABAB',

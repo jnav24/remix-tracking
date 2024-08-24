@@ -12,6 +12,8 @@ import Avatar from '~/components/elements/Avatar';
 import FormButton from '~/components/forms-fields/FormButton';
 import UserIcon from '~/components/icons/solid/UserIcon';
 import TrashIcon from '~/components/icons/solid/TrashIcon';
+import Drawer from '~/components/drawers/Drawer';
+import TeamMemberDrawer from '~/components/drawers/TeamMemberDrawer';
 
 type Team = {
     first_name: string;
@@ -92,11 +94,12 @@ export async function loader() {
 export default function DashboardTeam() {
     const data = useLoaderData<typeof loader>();
     const [isOpen, setIsOpen] = useState(false);
+    const [isSlideOpen, setIsSlideOpen] = useState(false);
 
     const actionsColumn = () => {
         return (
             <div className='space-x-2'>
-                <FormButton variant='text' fab>
+                <FormButton variant='text' fab onClick={() => setIsSlideOpen(true)}>
                     <UserIcon className='size-5 text-dm-text-disabled dark:text-lm-text-disabled' />
                 </FormButton>
                 <FormButton variant='text' fab>
@@ -154,6 +157,10 @@ export default function DashboardTeam() {
                 <InviteMemberModal closeModal={() => setIsOpen(false)} />
             </Modal>
 
+            <Drawer closeSlide={() => setIsSlideOpen(false)} showSlide={isSlideOpen}>
+                <TeamMemberDrawer />
+            </Drawer>
+
             <DashboardLayout
                 actions={[
                     {
@@ -164,6 +171,145 @@ export default function DashboardTeam() {
                 ]}
                 title='Team'
             >
+                <div className='mb-16 grid grid-cols-3 gap-6'>
+                    <div className='rounded-lg border border-lm-stroke bg-lm-secondary px-4 py-8 dark:border-dm-stroke dark:bg-dm-secondary'>
+                        <Typography variant='h5'>Most Projects</Typography>
+                        <div className='mt-4 flex items-center justify-between'>
+                            <div className='flex space-x-2'>
+                                <Avatar
+                                    image='https://t4.ftcdn.net/jpg/03/64/21/11/360_F_364211147_1qgLVxv1Tcq0Ohz3FawUfrtONzz8nq3e.jpg'
+                                    size={10}
+                                />
+
+                                <div>
+                                    <Typography variant='body1'>Peter Parker</Typography>
+                                    <Typography variant='caption'>Photo Journalist</Typography>
+                                </div>
+                            </div>
+
+                            <div className='bg-lm-text/60 rounded-lg px-4 py-1 dark:bg-dm-text/60'>
+                                <Typography variant='body2'>12</Typography>
+                            </div>
+                        </div>
+
+                        <div className='mt-4 flex items-center justify-between border-y border-lm-stroke py-2 dark:border-dm-stroke'>
+                            <div className='flex space-x-2'>
+                                <Avatar
+                                    image='https://t4.ftcdn.net/jpg/03/64/21/11/360_F_364211147_1qgLVxv1Tcq0Ohz3FawUfrtONzz8nq3e.jpg'
+                                    size={10}
+                                />
+
+                                <div>
+                                    <Typography variant='body1'>Peter Parker</Typography>
+                                    <Typography variant='caption'>Photo Journalist</Typography>
+                                </div>
+                            </div>
+
+                            <div className='bg-lm-text/60 rounded-lg px-4 py-1 dark:bg-dm-text/60'>
+                                <Typography variant='body2'>12</Typography>
+                            </div>
+                        </div>
+
+                        <div className='mt-4 flex items-center justify-between'>
+                            <div className='flex space-x-2'>
+                                <Avatar
+                                    image='https://t4.ftcdn.net/jpg/03/64/21/11/360_F_364211147_1qgLVxv1Tcq0Ohz3FawUfrtONzz8nq3e.jpg'
+                                    size={10}
+                                />
+
+                                <div>
+                                    <Typography variant='body1'>Peter Parker</Typography>
+                                    <Typography variant='caption'>Photo Journalist</Typography>
+                                </div>
+                            </div>
+
+                            <div className='bg-lm-text/60 rounded-lg px-4 py-1 dark:bg-dm-text/60'>
+                                <Typography variant='body2'>12</Typography>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div className='rounded-lg border border-lm-stroke bg-lm-secondary px-4 py-8 dark:border-dm-stroke dark:bg-dm-secondary'>
+                        <Typography variant='h5'>Most Hours</Typography>
+                        <div className='mt-4 flex items-center justify-between'>
+                            <div className='flex space-x-2'>
+                                <Avatar
+                                    image='https://t4.ftcdn.net/jpg/03/64/21/11/360_F_364211147_1qgLVxv1Tcq0Ohz3FawUfrtONzz8nq3e.jpg'
+                                    size={10}
+                                />
+
+                                <div>
+                                    <Typography variant='body1'>Peter Parker</Typography>
+                                    <Typography variant='caption'>Photo Journalist</Typography>
+                                </div>
+                            </div>
+
+                            <div className='bg-lm-text/60 rounded-lg px-4 py-1 dark:bg-dm-text/60'>
+                                <Typography variant='body2'>12</Typography>
+                            </div>
+                        </div>
+
+                        <div className='mt-4 flex items-center justify-between border-y border-lm-stroke py-2 dark:border-dm-stroke'>
+                            <div className='flex space-x-2'>
+                                <Avatar
+                                    image='https://t4.ftcdn.net/jpg/03/64/21/11/360_F_364211147_1qgLVxv1Tcq0Ohz3FawUfrtONzz8nq3e.jpg'
+                                    size={10}
+                                />
+
+                                <div>
+                                    <Typography variant='body1'>Peter Parker</Typography>
+                                    <Typography variant='caption'>Photo Journalist</Typography>
+                                </div>
+                            </div>
+
+                            <div className='bg-lm-text/60 rounded-lg px-4 py-1 dark:bg-dm-text/60'>
+                                <Typography variant='body2'>12</Typography>
+                            </div>
+                        </div>
+
+                        <div className='mt-4 flex items-center justify-between'>
+                            <div className='flex space-x-2'>
+                                <Avatar
+                                    image='https://t4.ftcdn.net/jpg/03/64/21/11/360_F_364211147_1qgLVxv1Tcq0Ohz3FawUfrtONzz8nq3e.jpg'
+                                    size={10}
+                                />
+
+                                <div>
+                                    <Typography variant='body1'>Peter Parker</Typography>
+                                    <Typography variant='caption'>Photo Journalist</Typography>
+                                </div>
+                            </div>
+
+                            <div className='bg-lm-text/60 rounded-lg px-4 py-1 dark:bg-dm-text/60'>
+                                <Typography variant='body2'>12</Typography>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div className='rounded-lg border border-lm-stroke bg-lm-secondary px-4 py-8 dark:border-dm-stroke dark:bg-dm-secondary'>
+                        <Typography variant='h5'>Newest Member</Typography>
+
+                        <div className='mt-6 flex items-center space-x-4'>
+                            <div>
+                                <Avatar
+                                    image='https://t4.ftcdn.net/jpg/03/64/21/11/360_F_364211147_1qgLVxv1Tcq0Ohz3FawUfrtONzz8nq3e.jpg'
+                                    size={28}
+                                />
+                            </div>
+                            <div>
+                                <Typography variant='h3'>Peter Parker</Typography>
+                                <Typography variant='caption'>Photo Journalist</Typography>
+                                <div className='mt-4'>
+                                    <Typography variant='body1'>
+                                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. At
+                                        consequatur ducimus.
+                                    </Typography>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
                 <div className='my-6'>
                     <Typography tag='h2' variant='h4'>
                         Team Members
