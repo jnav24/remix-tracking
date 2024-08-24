@@ -12,16 +12,9 @@ type Props = {
     closeSlide: () => void;
     showSlide?: boolean;
     title?: string;
-    width?: number | string;
 };
 
-export default function SlideOver({
-    children,
-    showSlide = false,
-    closeSlide,
-    title,
-    width,
-}: Props) {
+export default function Drawer({ children, showSlide = false, closeSlide, title }: Props) {
     const [showContent, setShowContent] = useState(false);
 
     useEffect(() => {
@@ -48,13 +41,13 @@ export default function SlideOver({
                 <SlideTransition direction='left' show={showSlide}>
                     <div
                         className={cn(
-                            'absolute right-0 top-0 z-10 flex h-screen justify-end bg-red-200',
+                            'absolute right-0 top-0 z-10 flex h-screen justify-end',
                             `w-full md:w-128`,
                         )}
                     >
                         <div
                             className={cn(
-                                'flex h-full w-full flex-col overflow-y-scroll bg-white shadow-xl dark:bg-gray-900',
+                                'flex h-full w-full flex-col overflow-y-scroll bg-lm-secondary shadow-xl dark:bg-dm-primary',
                             )}
                             role='dialog'
                             aria-modal='true'
@@ -63,7 +56,7 @@ export default function SlideOver({
                             <div className='flex flex-row items-center justify-between pl-12 pt-4'>
                                 <div>{title && <Typography variant='h3'>{title}</Typography>}</div>
                                 <FormButton onClick={closeSlide} size='xs' variant='text'>
-                                    <CancelIcon className='size-6' />
+                                    <CancelIcon className='size-6 text-lm-stroke' />
                                 </FormButton>
                             </div>
                             {showContent && children}
