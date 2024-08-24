@@ -122,7 +122,7 @@ export default function FormSelect({
                 <span className='flex-1 text-left text-sm text-gray-500'>{getPlaceholder}</span>
                 <ChevronDownIcon
                     className={clsx(
-                        'h-6 w-6 transition duration-300',
+                        'ml-2 size-4 transition duration-300',
                         isDropDownOpened ? 'rotate-180' : 'rotate-0',
                     )}
                 />
