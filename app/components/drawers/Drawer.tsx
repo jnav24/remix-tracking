@@ -56,7 +56,7 @@ export default function Drawer({ children, showSlide = false, closeSlide, title 
                             <div className='flex flex-row items-center justify-between pl-12 pt-4'>
                                 <div>{title && <Typography variant='h3'>{title}</Typography>}</div>
                                 <FormButton onClick={closeSlide} size='xs' variant='text'>
-                                    <CancelIcon className='size-6 text-lm-stroke' />
+                                    <CancelIcon className='size-6 text-dm-text-disabled dark:text-lm-stroke' />
                                 </FormButton>
                             </div>
                             {showContent && children}
