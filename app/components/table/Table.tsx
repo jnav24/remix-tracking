@@ -27,7 +27,7 @@ type Props<T> = {
     empty?: TableEmptyProps;
 };
 
-const defaultPaginate = { current: 1, options: [5, 25, 50], selected: 5 };
+const defaultPaginate = { current: 1, options: [10, 25, 50], selected: 10 };
 
 export default function Table<T extends object>({
     columns,
@@ -145,7 +145,7 @@ export default function Table<T extends object>({
                         </div>
                     )}
 
-                    <div className='text-lm-text-hover flex flex-row items-center justify-between space-x-4 border-b border-lm-stroke px-4 py-4 dark:border-dm-stroke dark:text-dm-text-hover'>
+                    <div className='flex flex-row items-center justify-between space-x-4 border-b border-lm-stroke px-4 py-4 text-lm-text-hover dark:border-dm-stroke dark:text-dm-text-hover'>
                         {selectable && (
                             <FormCheckbox
                                 defaultChecked={allChecked}
