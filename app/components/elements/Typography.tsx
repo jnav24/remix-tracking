@@ -56,7 +56,7 @@ export default function Typography({ children, className = '', color, tag, varia
                 break;
             default:
                 if (variant === 'caption') {
-                    classes.push('text-sm dark:text-gray-300');
+                    classes.push('text-sm');
                 } else {
                     classes.push(variant === 'body1' ? 'text-base' : 'text-[0.9375rem]');
                 }
@@ -74,7 +74,11 @@ export default function Typography({ children, className = '', color, tag, varia
                 classes.push('text-danger dark:text-light-danger');
                 break;
             default:
-                classes.push('text-gray-700 dark:text-gray-100');
+                if (variant === 'caption') {
+                    classes.push('text-gray-400 dark:text-dm-text-disabled');
+                } else {
+                    classes.push('text-gray-700 dark:text-gray-100');
+                }
                 break;
         }
 
