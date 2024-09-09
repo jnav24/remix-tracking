@@ -1,17 +1,6 @@
 export type Validator = {
-    message: string;
-    validate: (...params: [string, string]) => boolean;
-};
-
-export type ValidatorType = {
-    eq: RulesOptions;
-    float: RulesOptions;
-    gt: RulesOptions;
-    lt: RulesOptions;
-    in: RulesOptions;
-    match: RulesOptions;
-    max: RulesOptions;
-    min: RulesOptions;
+    message: (param?: string) => string;
+    validate: (val: string, option?: string) => boolean;
 };
 
 export type RulesOptions = {
@@ -19,22 +8,30 @@ export type RulesOptions = {
     pattern?: string;
 };
 
+type RemoveColon<T> = {
+    [K in keyof T as K extends `${infer Prefix}:` ? Prefix : K]: T[K];
+};
+
+export type ValidatorType = RemoveColon<RulesType>;
+
 export type RulesType = {
     'alpha-numeric'?: RulesOptions;
     email?: RulesOptions;
-    [key: `eq:${number}`]: RulesOptions;
-    [key: `float:${number}`]: RulesOptions;
-    [key: `gt:${number}`]: RulesOptions;
-    [key: `lt:${number}`]: RulesOptions;
+    'eq:'?: RulesOptions;
+    'float:'?: RulesOptions;
+    'gt:'?: RulesOptions;
+    'lt:'?: RulesOptions;
     'has-int'?: RulesOptions;
-    [key: `in:${string}`]: RulesOptions;
+    'in:'?: RulesOptions;
     lower?: RulesOptions;
-    [key: `match:${string}`]: RulesOptions;
-    [key: `max:${number}`]: RulesOptions;
-    [key: `min:${number}`]: RulesOptions;
+    'match:'?: RulesOptions;
+    'max:'?: RulesOptions;
+    'min:'?: RulesOptions;
+    mixedCase?: RulesOptions;
     numeric?: RulesOptions;
     phone?: RulesOptions;
     required?: RulesOptions;
+    symbol?: RulesOptions;
     uuid?: RulesOptions;
     upper?: RulesOptions;
 };
